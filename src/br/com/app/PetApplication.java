@@ -1,10 +1,10 @@
-package br.com.fatec.app;
+package br.com.app;
 
-import br.com.fatec.negocio.*;
-import br.com.fatec.modelo.*;
+import br.com.negocio.*;
+import br.com.modelo.*;
 
 
-public class App {
+public class PetApplication {
 	public static void main(String[] args) {
 		
 		AsciiArt.printAsciiArt("🐾 PetSitter");
@@ -26,11 +26,11 @@ public class App {
 			boolean encontrado = false;
 			boolean vazia = false;
 			
-			op = controle.opcao(); // capita um int 
+			op = controle.opcao(); 
 			
 			switch (op) {
 			
-				case 0: //SAIR
+				case 0: 
 					System.out.println("Quer mesmo Sair do Programa?");
 					System.out.println("ESCOLHA:\n[1] Sim\n[2] Não");
 					System.out.print("Opçao: ");
@@ -53,22 +53,22 @@ public class App {
 					break;
 					
 			
-				case 1: //Faz o Cadastro
+				case 1: 
 			
 					menu.menuCadastro();
 					controle = new Controle();
 					op = controle.opcao();
 					
 					switch(op) {
-					case 1:	// Cadastra o Cliente
+					case 1:	
 						agenda.cadastroCliente();
 						break;
 					
-					case 2:	// Cadastra o Funcionar
+					case 2:	
 						agenda.cadastroFuncionario();
 						break;
 					
-					case 0: // Voltar 
+					case 0:  
 						continue;
 					default:
 						while(op>2 || op<1) {
@@ -82,17 +82,17 @@ public class App {
 					break;
 					
 					
-				case 2: //Agendamentos
+				case 2: 
 					
 					menu.agendar();
 					controle = new Controle();
 					op = controle.opcao();
 					
 					switch(op) {
-						case 0:	// Cancelar Agendamento
+						case 0:	
 							break;
 							
-						case 1: // Adicionar Agendamento
+						case 1: 
 							encontrado = false;
 							
 							vazia = agenda.verificaLista();
@@ -102,12 +102,12 @@ public class App {
 								String cpf = agenda.verificaCPF();
 														
 								for(Pessoa cliente: agenda.clientes) {
-									// Pegar o CPF de todos os clientes cadastrados na lista
+									
 									String k = cliente.getCpf(); 
 															
 									if (cpf.equals(k)) {
 										encontrado = true;
-										// Verifica se o CPF Solicitado Está na Lista
+										
 										int posicao = agenda.clientes.indexOf(cliente);
 										agenda.marcarData(posicao);
 										System.out.println("Agendamento Realizado");
@@ -123,7 +123,7 @@ public class App {
 							}
 							break;
 							
-						case 2: // Editar Agendamento
+						case 2: 
 							encontrado = false;
 							vazia = agenda.verificaLista();
 							
@@ -132,13 +132,13 @@ public class App {
 								String cpf = agenda.verificaCPF();
 														
 								for(Pessoa cliente: agenda.clientes) {
-									// CPF de Todos os Clientes Cadastrados na Lista
+									
 									String k = cliente.getCpf(); 
 									
 									if (cpf.equals(k)) {
 										encontrado = true;
 										
-										// Vê se o CPF solicitado é igual a um CPF da lista de clientes
+										
 										int posicao = agenda.clientes.indexOf(cliente);
 										agenda.editarAgendamento(posicao);
 										System.out.println("Agendamento Realizado");
@@ -165,22 +165,22 @@ public class App {
 					break;
 					
 				
-				case 3:	//Lista de Clientes e Funcionários
+				case 3:	
 					menu.menuListagem();
 					controle = new Controle();
 					op = controle.opcao();
 					
 					switch(op) {
 					
-					case 1: // Lista de Clientes
+					case 1: 
 						agenda.listaClientes();
 						break;
 					
-					case 2: // Lista Dos Funcionários
+					case 2: 
 						agenda.listaFuncionarios();
 						break;
 					
-					case 0: // Voltar
+					case 0: 
 						continue;
 					
 					default:
@@ -194,13 +194,13 @@ public class App {
 					break;
 				
 					
-				case 4: //Ranking dos Pets
+				case 4: 
 					menu.menuRanking();
 					controle = new Controle();
 					op = controle.opcao();
 					
 					switch(op) {
-					case 1:	// Ranking das Raças 
+					case 1:
 						menu.menuRankingRacasComuns();
 						
 						controle = new Controle();
@@ -208,7 +208,7 @@ public class App {
 						
 						agenda.gerarRankingRacas(op);
 						break;
-					case 2: // Ranking dos Gêneros
+					case 2: 
 						menu.menuRankingGenerosFavoritos();
 						
 						controle = new Controle();
@@ -217,7 +217,7 @@ public class App {
 						agenda.gerarRankingGeneros(op);
 						
 						break;
-					case 0: // Voltar
+					case 0: 
 						continue;
 					
 					default:
@@ -230,19 +230,19 @@ public class App {
 					}
 					break;
 
-				case 5: //HISTORICO DE ATENDIMENTO FUNCIONARIO PETSITTER
+				case 5: 
 					menu.menuHistorico();
 					controle = new Controle();
 					op = controle.opcao();
 					
 					switch(op) {
-					case 1:	// HISTORICO DO CLIENTE				
+					case 1:				
 						agenda.historicoCliente();
 						break;
-					case 2: // HISTORICO DO FUNCIONARIO
+					case 2: 
 						agenda.historicoFuncionario();
 						break;
-					case 0: // VOLTAR
+					case 0: 
 						break;
 					
 					default:
